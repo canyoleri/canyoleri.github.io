@@ -1,0 +1,454 @@
+<!doctype html><html dir=ltr lang=en data-theme class="html theme--light"><head>
+<title>
+|
+Living The Sweet PowerShell #1
+</title>
+<meta charset=utf-8><meta name=generator content="Hugo 0.92.2"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=author content>
+<meta name=description content="Just Curious">
+<link rel=stylesheet href=/scss/main.min.1147aa5bacb4bce677a0e264073829caedb82fd18ea07a5f1d80521f539d1c45.css integrity="sha256-EUeqW6y0vOZ3oOJkBzgpyu24L9GOoHpfHYBSH1OdHEU=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc=" crossorigin=anonymous type=text/css>
+<link rel="shortcut icon" href=/favicon.ico type=image/x-icon>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=canonical href=https://canyoleri.github.io/posts/livingsweetpwsh/>
+<script type=text/javascript src=/js/anatole-header.min.46e6a54097480084f8f52c20ca1aa7425b4fad17029a887fd4017b12e311a72d.js integrity="sha256-RualQJdIAIT49SwgyhqnQltPrRcCmoh/1AF7EuMRpy0=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/anatole-theme-switcher.min.4c31f3cf7e8e609c897dba88aecac0e8db1ebb4e5c841d3f9ffb01d463973678.js integrity="sha256-TDHzz36OYJyJfbqIrsrA6Nseu05chB0/n/sB1GOXNng=" crossorigin=anonymous></script>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Living The Sweet PowerShell #1">
+<meta name=twitter:description content="In 2018, I conducted an attack scenario in my laboratory environment based on some external sources and my own research. In the scenario, an attacker exploited the MS17-010 vulnerability to gain access to a compromised machine. Using the compromised user account with limited privileges the attacker established a PowerShell Empire connection and executed DCSYNC and golden ticket attacks to take control of the domain environment. Attacker used WMI for lateral movements, compromising other machines.">
+<meta property="og:title" content="Living The Sweet PowerShell #1">
+<meta property="og:description" content="In 2018, I conducted an attack scenario in my laboratory environment based on some external sources and my own research. In the scenario, an attacker exploited the MS17-010 vulnerability to gain access to a compromised machine. Using the compromised user account with limited privileges the attacker established a PowerShell Empire connection and executed DCSYNC and golden ticket attacks to take control of the domain environment. Attacker used WMI for lateral movements, compromising other machines.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://canyoleri.github.io/posts/livingsweetpwsh/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-07-05T19:06:23+03:00">
+<meta property="article:modified_time" content="2020-07-05T19:06:23+03:00"><meta property="og:site_name" content="Cyber Security">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Living The Sweet PowerShell #1","headline":"Living The Sweet PowerShell #1","alternativeHeadline":"","description":"
+      
+        In 2018, I conducted an attack scenario in my laboratory environment based on some external sources and my own research. In the scenario, an attacker exploited the MS17-010 vulnerability to gain access to a compromised machine. Using the compromised user account with limited privileges the attacker established a PowerShell Empire connection and executed DCSYNC and golden ticket attacks to take control of the domain environment. Attacker used WMI for lateral movements, compromising other machines.
+
+
+      
+
+
+    ","inLanguage":"en-us","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/canyoleri.github.io\/posts\/livingsweetpwsh\/"},"author":{"@type":"Person","name":""},"creator":{"@type":"Person","name":""},"accountablePerson":{"@type":"Person","name":""},"copyrightHolder":{"@type":"Person","name":""},"copyrightYear":"2020","dateCreated":"2020-07-05T19:06:23.00Z","datePublished":"2020-07-05T19:06:23.00Z","dateModified":"2020-07-05T19:06:23.00Z","publisher":{"@type":"Organization","name":"","url":"https://canyoleri.github.io/","logo":{"@type":"ImageObject","url":"https:\/\/canyoleri.github.io\/favicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"https:\/\/canyoleri.github.io\/posts\/livingsweetpwsh\/","wordCount":"1850","genre":[],"keywords":[]}</script>
+</head>
+<body class=body>
+<div class=wrapper>
+<aside class=wrapper__sidebar><div class="sidebar
+animated fadeInDown">
+<div class=sidebar__content>
+<div class=sidebar__introduction>
+<img class=sidebar__introduction-profileimage src=/images/profile.jpg alt="profile picture">
+<div class=sidebar__introduction-title>
+<a href=/>Cyber Security</a>
+</div>
+<div class=sidebar__introduction-description>
+<p>Just Curious</p>
+</div>
+</div>
+<ul class=sidebar__list>
+<li class=sidebar__list-item>
+<a href=https://www.linkedin.com/in/can-yoleri/ target=_blank rel="noopener me" aria-label=Linkedin title=Linkedin>
+<i class="fa-brands fa-linkedin-in fa-2x" aria-hidden=true></i>
+</a>
+</li>
+<li class=sidebar__list-item>
+<a href=https://twitter.com/CanYoleri target=_blank rel="noopener me" aria-label=Twitter title=Twitter>
+<i class="fa-brands fa-twitter fa-2x" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div><footer class="footer footer__sidebar">
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+Can Yoleri 2020-2024
+</li>
+</ul>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js integrity="sha256-+umsiJWZX+kZWLOVS+EelgJYJKBHcHJqNTHhGd3S1XY=" crossorigin=anonymous></script></div>
+</aside>
+<main class=wrapper__main>
+<header class=header><div class="animated fadeInDown">
+<a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+</a>
+<nav class=nav>
+<ul class=nav__list id=navMenu>
+<li class=nav__list-item>
+<a href=/ title>Home</a>
+</li>
+<li class=nav__list-item>
+<a href=/posts/ title>Post</a>
+</li>
+</ul>
+<ul class="nav__list nav__list--end">
+<li class=nav__list-item>
+<div class=themeswitch>
+<a title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="post
+animated fadeInDown">
+<div class=post__content>
+<h1>Living the Sweet PowerShell #1</h1>
+<p>In 2018, I conducted an attack scenario in my laboratory environment based on some external sources and my own research. In the scenario, an attacker exploited the MS17-010 vulnerability to gain access to a compromised machine. Using the compromised user account with limited privileges the attacker established a PowerShell Empire connection and executed DCSYNC and golden ticket attacks to take control of the domain environment. Attacker used WMI for lateral movements, compromising other machines. Inspired by this scenario I wanted to start a series of articles to seek answers to questions about defensive measures against such attacks, developing SIEM rules, detection methods and how to intervene through SOAR (Cortex XSOAR) in future scenarios.</p>
+<p>What is in the environment:</p>
+<ul>
+<li>Sysmon</li>
+<li>QRadar</li>
+<li>Configured PowerShell logs (Module Logging, etc.)</li>
+<li>Microsoft ATA</li>
+</ul>
+<blockquote>
+<ul>
+<li>Note: Due to using some screenshots from my previously prepared document, there may be variations in names and dates.</li>
+</ul>
+</blockquote>
+<p><strong>Attacker side:</strong></p>
+<p>Attacker using the MS17-010 vulnerability and takes control of Andre&rsquo;s computer.</p>
+<p><img src=/images/livingsweetpwsh1/ms17-010-2.jpg alt></p>
+<p><strong>Defender side:</strong></p>
+<p>As defenders we need to disable PowerShell version 2.0. This version lacks sufficient logging capabilities making it highly attractive to threat actors. Microsoft has taken steps to enhance security in the latest versions of PowerShell. These improvements include advanced logging features logging of executed PowerShell commands, scripts, and their outputs. This provides crucial measures for the defense side and strengthens the overall security posture.</p>
+<p>Is PowerShell version 2 active? Let&rsquo;s check it:</p>
+<p><img src=/images/livingsweetpwsh1/pwshv2.png alt></p>
+<p>I am running the following commands sequentially to disable version 2 of PowerShell.</p>
+<pre><code>Disable-WindowsOptionalFeature -Online -FeatureName &quot;MicrosoftWindowsPowerShellV2Root&quot;
+
+Disable-WindowsOptionalFeature -Online -FeatureName &quot;MicrosoftWindowsPowerShellV2&quot;
+</code></pre>
+<p><img src=/images/livingsweetpwsh1/pwshv2disable.png alt></p>
+<p><strong>Attacker side:</strong></p>
+<p>Let&rsquo;s go back to Empire. To establish a connection from Empire we first need to set up a listener.</p>
+<p><img src=/images/livingsweetpwsh1/listeners.png alt=listeners></p>
+<p>We can view our payload using the &ldquo;launcher powershell&rdquo; command in Empire.</p>
+<p><img src=/images/livingsweetpwsh1/payload.png alt></p>
+<p>Once we execute the launcher code in the shell obtained through MS17-010, we establish an Empire connection.</p>
+<p><img src=/images/livingsweetpwsh1/payload2.png alt></p>
+<p><strong>Defender side:</strong></p>
+<p>Until this point everything seems good. After obtaining the shell using MS17-010, when we execute the launcher code we establish an Empire connection. Now let&rsquo;s see how we can detect it and what measures we can take. Depending on the security investments in your organization you can increase your detection chances separately through products like FireEye NX and SIEM.</p>
+<p>(Don&rsquo;t forget SSL visibility alongside FireEye NX☺️)</p>
+<p>When reviewing logs in QRadar we can observe the obfuscate - deobfuscate state of the code that the attacker executed in base64 format due to PowerShell Module Logging being enabled.</p>
+<p><img src=/images/livingsweetpwsh1/qradar-base64.png alt></p>
+<p><img src=/images/livingsweetpwsh1/qradar-base64d.png alt=qradar-base64d></p>
+<p>As we continue inspecting the logs, the following sections within the payload will undoubtedly raise suspicion</p>
+<pre><code>value=&quot;/admin/get.php&quot; ParameterBinding(Get-Random): name=&quot;InputObject&quot;; value=&quot;/news.php&quot; ParameterBinding(Get-Random): name=&quot;InputObject&quot;; value=&quot;/login/process.php&quot; 
+</code></pre>
+<p><img src=/images/livingsweetpwsh1/qradar-value.png alt=qradar-value></p>
+<p>We can use the following regex pattern to detect the <strong>&ndash;enc</strong> command in the Empire launcher. By doing so we will not only identify Empire-related activity but also catch any instance of PowerShell using the <strong>encode</strong> command:</p>
+<pre><code>\-[Ee^]{1,2}[NnCcOoDdEeMmAa^]+ [A-Za-z0-9+/=]{5,} 
+</code></pre>
+<p>On <strong>QRadar</strong> the following rule will serve our purpose effectively:</p>
+<p><img src=/images/livingsweetpwsh1/pwsh-regex.png alt=pwsh-regex></p>
+<p><strong>Sigma rule</strong>:</p>
+<pre><code>title: T1086-MITRE-PowerShell ENC Command Usage 
+id: -
+description: PowerShell ENC Command Usage 
+references: 
+    - https://unit42.paloaltonetworks.com/unit42-pulling-back-the-curtains-on-encodedcommand-powershell-attacks/
+
+tags:
+    - attack.Execution 
+    - attack.T1086
+    
+logsource:
+    product: windows
+    service: sysmon 
+    
+date: 9/6/2020
+author: Can Yoleri
+
+detection:
+    selection:
+        
+        EventID: 1  
+
+        expression: 
+
+            - '\-[Ee^]{1,2}[NnCcOoDdEeMmAa^]+ [A-Za-z0-9+/=]{5,}'
+
+condition: selection
+falsepositives: 
+  — Legacy Apps.
+level: High
+</code></pre>
+<p>We can create a rule on the SIEM to generate an alert if there is a connection to an IP address using PowerShell or CMD.</p>
+<p>On QRadar, a rule like the following will serve our purpose effectively:</p>
+<p><img src=/images/livingsweetpwsh1/qradar-rule.png alt=qradar-rule></p>
+<pre><code>title: T1059/T1086 - MITRE - Connectivity Monitor for PowerShell / CMD 
+id: -
+description: Connectivity Monitor for PowerShell / CMD 
+references: 
+    - 
+
+tags:
+    - attack.Execution 
+    - attack.T1059
+    - attack.T1086
+
+logsource:
+    product: windows
+    service: sysmon 
+
+date: 9/6/2020
+author: Can Yoleri
+
+detection:
+    selection:
+        
+        EventID: 3
+        
+        Image:
+
+            — '*\powershell.exe'
+            — '*\cmd.exe'
+
+        expression: #dst_ip
+
+            - '\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.'
+
+condition: selection
+falsepositives: 
+  — Legacy Apps.
+level: High
+</code></pre>
+<p><strong>Attacker side:</strong> Let&rsquo;s continue:</p>
+<p>Listing active connections:</p>
+<p><img src=/images/livingsweetpwsh1/agents.png alt=agents></p>
+<p>First, I run Mimikatz to check if clear-text passwords are being stored. However, Mimikatz only provides hashes and does not show anything else</p>
+<p><img src=/images/livingsweetpwsh1/mimi.png alt=mimi></p>
+<p><img src=/images/livingsweetpwsh1/mimi2.png alt=mimi2></p>
+<p>With the &ldquo;creds&rdquo; command we can view all the credential information we have obtained.</p>
+<p><img src=/images/livingsweetpwsh1/creds.png alt=creds></p>
+<p><strong>Defender side:</strong></p>
+<p>We ran Mimikatz, let&rsquo;s see what logs we received.</p>
+<p>As we mentioned the importance of having PowerShell logging enabled we can see that with PowerShell logging enabled we can easily view the output of commands and scripts executed on the system.</p>
+<p>The output seen by the attacker:</p>
+<p><img src=/images/livingsweetpwsh1/mimi-event.png alt=mimi-event></p>
+<p><strong>QRADAR</strong>:</p>
+<p><img src=/images/livingsweetpwsh1/mimi-qradar.png alt=mimi-qradar></p>
+<p><strong>Certainly, if the computer has AV (Antivirus), EDR (Endpoint Detection and Response), and network security products installed and they are properly configured, they should be able to detect this activity and generate an alert.</strong></p>
+<p>To generate an alert in PowerShell logs if MD5/NTLM hash information is detected we can create a rule with the following regex pattern:</p>
+<p><img src=/images/livingsweetpwsh1/ntlm-hash.png alt=ntlm-hash></p>
+<pre><code>title: T1003-MITRE-NTLM Hash in PWSH Logs 
+id: -
+description: NTLM Hash in PWSH Logs 
+references: 
+    - 
+tags:
+
+    - attack.CredentialAccess
+    - attack.T1003
+
+ logsource:
+
+    product: windows
+    service: PowerShell 
+
+date: 10/6/2020
+author: Can Yoleri
+detection:
+
+    selection:
+
+        EventID: 4103
+
+        expression: 
+
+            - '\b[0-9a-fA-F]{32}\b'
+
+condition: selection
+falsepositives: 
+  — Legacy Apps.
+level: High
+</code></pre>
+<p>While inspecting the logs we can observe instances where the source image is PowerShell, the target image is whoami and the Granted Access value is <strong>0x1FFFFF</strong>.</p>
+<p>This means that the PowerShell.exe with the value <strong>0x1FFFFF</strong> may have executed the whoami.exe process, which is a part of Invoke-Mimikatz in Empire. However it is possible that this activity is legitimate. Nevertheless it is best to continue investigating to ensure security and verify the legitimacy of the activity.</p>
+<p><img src=/images/livingsweetpwsh1/whoami2.png alt=whoami2></p>
+<p>The parent image is PowerShell and the image is whoami. It will match the encode rule we previously set up and it will generate an alert.</p>
+<p><img src=/images/livingsweetpwsh1/whoami.png alt=whoami></p>
+<p><strong>Mimikatz:</strong></p>
+<p><img src=/images/livingsweetpwsh1/mimi-prevent.png alt=mimi-prevent></p>
+<p><img src=/images/livingsweetpwsh1/mimi-prevent2.png alt=mimi-prevent2></p>
+<blockquote>
+<p><strong>There is no simple way to address all possibilities or gather all events but I believe that beyond detecting tools like Mimikatz more rules and configurations are needed..</strong></p>
+<p><strong>To prevent/detect credential dumping methods like this configurations such as Microsoft&rsquo;s Credential Guard, LSA protection and technologies like AV and EDR are essential. Additionally, technologies that analyze traffic to analyze NTLM hashes, Mimikatz output, and transfers of password dumpers over SMB are also necessary.</strong></p>
+</blockquote>
+<p>Indeed, in addition to the mentioned security technologies we can also implement Group Policy hardening measures to mitigate the risks posed by Mimikatz.</p>
+<p><strong>Debug Privilege</strong></p>
+<p>To interact with the LSASS process, Mimikatz requires specific permissions.</p>
+<p>Here I am granting the privilege to debug programs only to a specific group that needs it, adhering to the principle of least privilege.</p>
+<p><img src=/images/livingsweetpwsh1/gpo.png alt=gpo></p>
+<p>When executed it will produce the following error:</p>
+<p><img src=/images/livingsweetpwsh1/mimi-prevent3.png alt=mimi-prevent3></p>
+<p><strong>WDigest</strong></p>
+<p>We navigate to the following path in the Registry and set the values of <strong>Negotiate</strong> and <strong>UseLogonCredential</strong> to 0. Although a privileged attacker can modify these values, we will monitor these values from SIEM. If the Registry value becomes 1 we will investigate the possibility of the attacker having changed it accordingly.</p>
+<pre><code>Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest 
+</code></pre>
+<p><img src=/images/livingsweetpwsh1/wdigest.png alt=wdigest></p>
+<p><strong>Sigma:</strong></p>
+<pre><code>title: T1003/T1112-MITRE-Registry Keys For Wdigest
+id: -
+description: Monitor for wdigest registry key
+status: experimental
+references:
+    - 
+tags:
+    - attack.CredentialDumping
+    - attack.T1003
+    - attack.DefenseEvasion 
+    - attack.T1112
+
+logsource:
+    product: windows
+    service: sysmon 
+
+date: 2020/06/1
+author: Can Yoleri
+
+detection:
+    selection:
+        ParentImage|contains:
+
+            - '\powershell.exe'
+            - '\cmd.exe'
+
+        Image:
+            — *\reg.exe
+
+        CommandLine|contains:
+            - '\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest\'
+            - 'UseLogonCredential'
+            - 'Negotiate'
+
+condition: 1 of them
+falsepositives: — unknown
+level: High
+</code></pre>
+<p>​</p>
+<p>When the attacker runs the command they will receive the following error:</p>
+<p><img src=/images/livingsweetpwsh1/wdigest2.png alt=wdigest2></p>
+<p><strong>LSA Protection</strong></p>
+<p>This protection can be achieved by setting the &ldquo;RunAsPPL&rdquo; value to 1 in the Registry.</p>
+<p><img src=/images/livingsweetpwsh1/lsaprotection.png alt=lsaprotection></p>
+<p>When executed:</p>
+<p><img src=/images/livingsweetpwsh1/lsaprotection2.png alt=lsaprotection2></p>
+<p><strong>Credential Caching</strong></p>
+<p>In case there is no access to the DC, we can check if there is any cached account information to authenticate the user. We can enter the cache value under the SECURITY registry key as follows:</p>
+<p><strong>HKEY_LOCAL_MACHINE\SECURITY\Cache</strong></p>
+<p>We can also set the value to 0 in the GPO settings to prevent caching.</p>
+<p><img src=/images/livingsweetpwsh1/cache.png alt=cache></p>
+<p>When executed:</p>
+<p><img src=/images/livingsweetpwsh1/cache2.png alt=cache2></p>
+<p>Indeed, we can continue to expand the preventive measures in various ways.</p>
+<p><strong>Attacker side:</strong></p>
+<p>As the attacker, we have successfully compromised the machine, executed Mimikatz but couldn&rsquo;t find clear-text passwords. Now, let&rsquo;s proceed with the scenario by identifying the IP address of the DC and continue our actions accordingly.</p>
+<p>To identify the Domain Controller machine, I am using the</p>
+<p><strong>situational_awareness/network/powerview/get_domain_controller</strong> module</p>
+<p><img src=/images/livingsweetpwsh1/getdc.png alt=getdc></p>
+<p>We see that the IP address of the domain controller is 10.10.10.128</p>
+<p><img src=/images/livingsweetpwsh1/getdc2.png alt=getdc2></p>
+<p><strong>Defender side:</strong></p>
+<p>We see the same output that the attacker saw in the PowerShell logs.</p>
+<p><img src=/images/livingsweetpwsh1/getdclog.png alt=getdclog></p>
+<p><strong>QRADAR:</strong></p>
+<p><img src=/images/livingsweetpwsh1/getdclog2.png alt=getdclog2></p>
+<blockquote>
+<p><img src=/images/livingsweetpwsh1/pwsh.png alt=pwsh></p>
+</blockquote>
+<p>As we continue to look at the logs we also notice the DNS Query logs. Encode PowerShell, Mimikatz, and now a DNS request to the DC..</p>
+<p><img src=/images/livingsweetpwsh1/dns.png alt=dns></p>
+<p><strong>Attacker side:</strong></p>
+<p>We will create a Golden Ticket by taking the hash of the KRBTGT account with DCSYNC.</p>
+<p><strong>What is DCSYNC?</strong></p>
+<p>DCSYNC is a function that can be used to simulate the replication process of an Active Directory domain controller (DC) from an attacker. It can be used to extract data from the DC, such as user passwords and other sensitive information.</p>
+<p>To use DCSYNC, the attacker must have the appropriate permissions on a user account in the domain. These permissions can be domain administrator, enterprise administrator or a specific service account.</p>
+<ul>
+<li>Replicating Directory Changes</li>
+<li>Replicating Directory Changes All</li>
+<li>Replicating Directory Changes In Filtered Set</li>
+</ul>
+<p><img src=/images/livingsweetpwsh1/andrei.png alt=andrei></p>
+<p>As an attacker, if I have access to such an authorized user I can use the DCSYNC feature of Mimikatz to impersonate myself as a Domain Controller and use the MS-DRSR protocol to request account password information from the targeted Domain Controller.</p>
+<p><img src=/images/livingsweetpwsh1/dcsync.png alt=dcsync></p>
+<p>I am filling in the required fields on the module.</p>
+<p><img src=/images/livingsweetpwsh1/dcsync2.png alt=dcsync2></p>
+<p><img src=/images/livingsweetpwsh1/dcsync3.png alt=dcsync3></p>
+<p><img src=/images/livingsweetpwsh1/dcsync4.png alt=dcsync4></p>
+<p><strong>Defender side:</strong></p>
+<p>We can see that Microsoft ATA&rsquo;s logs have generated an alarm for us. I had previously done this on another machine so it appears as 2 accounts.</p>
+<p><img src=/images/livingsweetpwsh1/ata.png alt=ata></p>
+<p><strong>Attacker side:</strong></p>
+<p>We can see the hash of the krbtgt user by looking at the creds command again.</p>
+<p><img src=/images/livingsweetpwsh1/credsdc.png alt=credsdc></p>
+<p>Let&rsquo;s learn SID information now.</p>
+<p><img src=/images/livingsweetpwsh1/sid.png alt=sid></p>
+<p>Let&rsquo;s create a Golden Ticket.</p>
+<p><img src=/images/livingsweetpwsh1/goldenticket.png alt=goldenticket></p>
+<p>If we added 519 to the end of the SID information here, we would become Enterprise Admin in the root domain. But since we are not performing this scenario through the child domain, it will not make much difference.</p>
+<p>Golden Ticket creation process was successful.</p>
+<p><img src=/images/livingsweetpwsh1/goldenticket2.png alt=goldenticket2></p>
+<p><strong>QRADAR</strong>:</p>
+<p><img src=/images/livingsweetpwsh1/goldenqradar.png alt=goldenqradar></p>
+<p><strong>Defender side:</strong></p>
+<p>Microsoft ATA is detecting Golden Ticket activity.</p>
+<p><img src=/images/livingsweetpwsh1/ata-golden.png alt=ata-golden></p>
+<p>After creating Golden Ticket, we run the DCSYNC module again.</p>
+<p><img src=/images/livingsweetpwsh1/after-dcsync.png alt=after-dcsync></p>
+<p><strong>Defender side:</strong></p>
+<p><strong>QRADAR:</strong></p>
+<p><img src=/images/livingsweetpwsh1/dcsync-end.png alt=dcsync-end></p>
+<p><strong>Attacker side:</strong></p>
+<p>Let&rsquo;s try the Invoke WMI lateral movement module now. When we type the listener and the name of the machine we want to connect to, it says Now active!</p>
+<p><img src=/images/livingsweetpwsh1/invokewmi.png alt=invokewmi></p>
+<p><strong>Defender side:</strong></p>
+<p>We can see that the Empire launcher is running by looking at the logs of the infected machine.</p>
+<p>EventID:600</p>
+<p><img src=/images/livingsweetpwsh1/zedeleyici.png alt=zedeleyici></p>
+<p>EventID:800 <img src=/images/livingsweetpwsh1/zedeleyici2.png alt=zedeleyici2></p>
+<p>I&rsquo;m sure you can imagine what goes through my mind when I see this on top of so many encoded PowerShell logs 😱</p>
+<p><img src=/images/livingsweetpwsh1/zedeleyici3.png alt=zedeleyici3></p>
+<p>I am running the get_loggedon module to see the users who are logged on to the machine.</p>
+<p><img src=/images/livingsweetpwsh1/loggedon.png alt=loggedon></p>
+<p>When I look at the logs, I notice the Get-NetLoggedon part in the following log.</p>
+<p><img src=/images/livingsweetpwsh1/loggedon2.png alt=loggedon2></p>
+<p>When I search for it on Google, I see that it is a function used in PowerView. Someone must have collected information here!</p>
+<p><img src=/images/livingsweetpwsh1/loggedon3.png alt=loggedon3></p>
+<p>We can multiply scenarios, for example, we can change the ciphers when creating tickets so that ATA does not detect them, we can create silver tickets, we can bypass module logging. I am thinking of writing about these in the next articles. Developing the scenario is entirely up to our imagination.</p>
+<p><strong>References</strong></p>
+<p><a href=https://devblogs.microsoft.com/powershell/windows-powershell-2-0-deprecation/>https://devblogs.microsoft.com/powershell/windows-powershell-2-0-deprecation/</a></p>
+<p><a href=https://unit42.paloaltonetworks.com/unit42-pulling-back-the-curtains-on-encodedcommand-powershell-attacks/>https://unit42.paloaltonetworks.com/unit42-pulling-back-the-curtains-on-encodedcommand-powershell-attacks/</a></p>
+<p><a href=https://docs.microsoft.com/en-us/windows/security/identity-protection/credential-guard/credential-guard-manage>https://docs.microsoft.com/en-us/windows/security/identity-protection/credential-guard/credential-guard-manage</a></p>
+<p><a href=https://docs.microsoft.com/en-us/windows-server/security/credentials-protection-and-management/configuring-additional-lsa-protection>https://docs.microsoft.com/en-us/windows-server/security/credentials-protection-and-management/configuring-additional-lsa-protection</a></p>
+<p><a href=https://techcommunity.microsoft.com/t5/windows-it-pro-blog/comprehensive-protection-for-your-credentials-with-credential/ba-p/765314>https://techcommunity.microsoft.com/t5/windows-it-pro-blog/comprehensive-protection-for-your-credentials-with-credential/ba-p/765314</a></p>
+<p><a href=https://underdefense.com/hidden-aspects-of-mimikatz-and-how-to-protect-your-infrastructure-by-using-sysmonsplunk/>https://underdefense.com/hidden-aspects-of-mimikatz-and-how-to-protect-your-infrastructure-by-using-sysmonsplunk/</a></p>
+<p><a href=https://securityriskadvisors.com/blog/detecting-in-memory-mimikatz/>https://securityriskadvisors.com/blog/detecting-in-memory-mimikatz/</a></p>
+</div>
+<div class=post__footer>
+</div>
+</div>
+</main>
+</div><footer class="footer footer__base">
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+Can Yoleri 2020-2024
+</li>
+</ul>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js integrity="sha256-+umsiJWZX+kZWLOVS+EelgJYJKBHcHJqNTHhGd3S1XY=" crossorigin=anonymous></script></body>
+</html>

